@@ -10,7 +10,7 @@ function Mime() {
   
   this.types      = Object.create( null )
   this.extensions = Object.create( null )
-  this.default    = this.type( 'bin' )
+  this.default    = this.types[ 'bin' ]
   
   fs.readFileSync( path.join( __dirname, 'mime.types' ), 'utf-8' )
     .split( /\r?\n/ )
