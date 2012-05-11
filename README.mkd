@@ -1,0 +1,75 @@
+mime-lib
+========
+
+
+Installing with [npm](http://npmjs.org/)
+----------------------------------------
+```npm install mime-lib```
+
+
+Usage
+-----
+
+
+### MIME type lookup
+
+```javascript
+mime.types[ 'html' ] // => text/html
+mime.types[ 'mp4' ]  // => video/mp4
+
+// Lookup with fallback to default
+mime.types[ 'nonexistant' ] || mime.default // => application/octet-stream
+```
+
+
+### MIME extension lookup
+
+```javascript
+mime.extensions[ 'text/html' ]   // => [ 'htm', 'html' ]
+mime.extensions[ 'nonexistant' ] // => undefined
+```
+
+
+### mime.encodeBase64( input, [charset] )
+
+Base64 encodes a buffer or string.  
+Returns string.
+
+
+### mime.decodeBase64( input, [charset] )
+
+Decodes a base64 encoded string.  
+Returns string or buffer.
+
+
+### mime.encodeQP( input, [multibyte, [wordMode]] )
+
+Encodes a string into Quoted-printable format.  
+Returns string.
+
+
+### mime.decodeQP( input, [multibyte, [wordMode]] )
+
+Decodes a string from Quoted-printable format.  
+Returns string.
+
+
+### mime.encodeWord( input, [type, [charset]] )
+
+Encodes a string into mime encoded 
+[word format](http://en.wikipedia.org/wiki/MIME#Encoded-Word).  
+Returns string.
+
+
+### mime.decodeWord( input )
+
+Decodes a string from mime encoded word format.  
+Returns string.
+
+
+### mime.foldLine( input, [maxLength, [hardWrap]] )
+
+Folds a long line according to the 
+[RFC 5322](http://tools.ietf.org/html/rfc5322#section-2.1.1).  
+Returns string.
+

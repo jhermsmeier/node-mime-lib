@@ -1,0 +1,43 @@
+{
+  
+  "name": "mime-lib",
+  "version": "0.0.1-alpha",
+  "description": "",
+  "kewords": [
+    
+  ],
+  
+  "author": {
+    "name":  "Jonas Hermsmeier",
+    "email": "jhermsmeier@googlemail.com",
+    "url":   "http://jhermsmeier.de"
+  },
+  
+  "main": "mime.js",
+  
+  "engine": {
+    "node": "0.6.x"
+  },
+  
+  "dependencies": {
+    
+  },
+  
+  "devDependencies": {
+    "mocha": "*"
+  },
+  
+  "scripts": {
+    "test": "mocha"
+  },
+  
+  "repository": {
+    "type": "git",
+    "url":  "git://github.com/jhermsmeier/node-mime.git"
+  },
+  
+  "bugs": {
+    "url": "https://github.com/jhermsmeier/node-mime/issues"
+  }
+  
+}
