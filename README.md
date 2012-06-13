@@ -20,6 +20,12 @@ mime.types['mp4']  // => video/mp4
 
 // Lookup with fallback to default
 mime.types['nonexistant'] || mime.default // => application/octet-stream
+
+// OR
+
+mime.type('html')        // => text/html
+mime.type('mp4')         // => video/mp4
+mime.type('nonexistant') // => application/octet-stream
 ```
 
 
@@ -28,6 +34,11 @@ mime.types['nonexistant'] || mime.default // => application/octet-stream
 ```javascript
 mime.extensions['text/html']   // => [ 'htm', 'html' ]
 mime.extensions['nonexistant'] // => undefined
+
+// OR
+
+mime.extension('text/html')   // => [ 'htm', 'html' ]
+mime.extension('nonexistant') // => undefined
 ```
 
 
