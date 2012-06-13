@@ -107,7 +107,7 @@ Mime.prototype = {
     
     input = input.replace( /[=]([A-F0-9]{2})/g, "%$1" )
     
-    return ( multibyte )
+    return ( multibyte === 'UTF-8' )
       ? decodeURIComponent( input )
       : unescape( input )
     
