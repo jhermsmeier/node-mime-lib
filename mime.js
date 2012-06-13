@@ -36,6 +36,26 @@ function Mime() {
 Mime.prototype = {
   
   /**
+   * Looks up MIME type by extension.
+   * 
+   * @param  {String} extension
+   * @return {String} MIME type
+   */
+  type: function( extension ) {
+    return this.types[ extension ] || mime.default
+  },
+  
+  /**
+   * Looks up file extensions by MIME type.
+   * 
+   * @param  {String} type MIME type
+   * @return {Array}  File extensions
+   */
+  extension: function( type ) {
+    return this.extensions[ type ]
+  },
+  
+  /**
    * Base64 encodes a buffer or string.
    * 
    * @param  {String|Buffer} input   
