@@ -1,5 +1,5 @@
-mime-lib
-========
+Node.js MIME Library
+====================
 
 
 ## Installing with [npm](http://npmjs.org/)
@@ -15,14 +15,6 @@ npm install mime-lib
 ### MIME type lookup
 
 ```javascript
-mime.types['html'] // => text/html
-mime.types['mp4']  // => video/mp4
-
-// Lookup with fallback to default
-mime.types['nonexistant'] || mime.default // => application/octet-stream
-
-// OR
-
 mime.type('html')        // => text/html
 mime.type('mp4')         // => video/mp4
 mime.type('nonexistant') // => application/octet-stream
@@ -32,11 +24,6 @@ mime.type('nonexistant') // => application/octet-stream
 ### MIME extension lookup
 
 ```javascript
-mime.extensions['text/html']   // => [ 'htm', 'html' ]
-mime.extensions['nonexistant'] // => undefined
-
-// OR
-
 mime.extension('text/html')   // => [ 'htm', 'html' ]
 mime.extension('nonexistant') // => undefined
 ```
