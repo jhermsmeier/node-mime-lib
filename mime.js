@@ -1,8 +1,8 @@
 
 /**
- * [Mime description]
+ * MIME constructor
  */
-function Mime() {
+function MIME() {
   
   var self = this
   var fs   = require( 'fs' )
@@ -30,10 +30,16 @@ function Mime() {
 }
 
 /**
- * Mime prototype
+ * Iconv constructor
+ * @type {Iconv}
+ */
+MIME.Iconv = require( 'iconv' ).Iconv
+
+/**
+ * MIME prototype
  * @type {Object}
  */
-Mime.prototype = {
+MIME.prototype = {
   
   /**
    * Looks up MIME type by extension.
@@ -63,8 +69,13 @@ Mime.prototype = {
    * @return {String} 
    */
   encodeBase64: function( input, charset ) {
-    if( Buffer.isBuffer( input ) ) return input.toString( 'base64' )
-    else return new Buffer( input, charset ).toString( 'base64' )
+    if( Buffer.isBuffer( input ) ) {
+      return input.toString( 'base64' )
+    } else {
+      return new MIME.Iconv( charset, 'UTF8//TRANSLIT//IGNORE' )
+        .convert( input )
+        .toString( 'base64' )
+    }
   },
   
   /**
@@ -75,9 +86,12 @@ Mime.prototype = {
    * @return {String|Buffer} 
    */
   decodeBase64: function( input, charset ) {
-    return ( charset )
-      ? new Buffer( input, 'base64' ).toString( charset )
-      : new Buffer( input, 'base64' )
+    if( charset ) {
+      return new Iconv( 'UTF8', charset + '//TRANSLIT//IGNORE' )
+        .convert( new Buffer( input, 'base64' ) )
+    } else {
+      return new Buffer( input, 'base64' )
+    }
   },
   
   /**
@@ -208,10 +222,10 @@ Mime.prototype = {
     
     // Go into "hard wrap" mode if there's
     // no whitespace to fold on
-    if( !/[\t ]/g.test( input ) )
+    if( !/\t|\s/g.test( input ) )
       hardWrap = true
     
-    var CRLF  = "\r\n"
+    var CRLF  = '\r\n'
     var lines = []
     
     if( hardWrap ) {
@@ -231,4 +245,4 @@ Mime.prototype = {
   
 }
 
-module.exports = new Mime
+module.exports = new MIME
