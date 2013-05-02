@@ -97,7 +97,7 @@ MIME.prototype = {
    * @return {String} MIME type
    */
   type: function( extension ) {
-    return this.types[ extension ] || mime.default
+    return this.types[ extension ] || this.default
   },
   
   /**
