@@ -105,15 +105,27 @@ MIME.prototype = {
    */
   encodeQP: function( input, wordMode ) {
     
-    var pattern = ( !wordMode )
-      ? /[\x3D]|[^\x09\x0D\x0A\x20-\x7E]/gm
-      : /[\x3D\x5F\x3F]|[^\x21-\x7E]/gm
+    var bytes = !Buffer.isBuffer( input )
+      ? new Buffer( input ) : input
     
-    return input.replace( pattern, function( char ) {
-      return bytes( char ).reduce( function( qp, byte ) {
-        return qp + '=' + byte.toString(16).toUpperCase()
-      }, '' )
-    })
+    var chr, out = '', len = bytes.length
+    
+    for( var i = 0; i < len; i++ ) {
+      chr = bytes[i]
+      if( wordMode ) {
+        // if matches /[\x3D]|[^\x09\x0D\x0A\x20-\x7E]/gm
+        out = chr !== 0x3D && ( chr >= 0x20 && chr <= 0x007E ) || ( chr === 0x09 || chr === 0x0D || chr === 0x0A )
+          ? out + String.fromCharCode( chr )
+          : out + '=' + chr.toString( 16 ).toUpperCase()
+      } else {
+        // if matches /[\x3D\x5F\x3F]|[^\x21-\x7E]/gm
+        out = (chr !== 0x3D && chr !== 0x5F && chr !== 0x3F) && (chr >= 0x21 && chr <= 0x007E)
+          ? out + String.fromCharCode( chr )
+          : out + '=' + chr.toString( 16 ).toUpperCase()
+      }
+    }
+    
+    return out
     
   },
   
@@ -158,7 +170,7 @@ MIME.prototype = {
       input = this.encodeBase64( input, charset )
     }
     
-    input = this.encodeQP( input, charset, true )
+    input = this.encodeQP( input, true )
     input = [ charset, type, input ].join( '?' )
     
     return '=?' + input + '?='
