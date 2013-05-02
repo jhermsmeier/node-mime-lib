@@ -1,54 +1,5 @@
 
 /**
- * Utility function which returns a
- * UTF8 byte array for a given char.
- * @param  {String} char
- * @return {Array}
- */
-function bytes( str ) {
-  
-  var chr, next, bytes = []
-  
-  for( var i = 0, l = str.length; i < l; i++ ) {
-    
-    chr = str.charCodeAt( i )
-    
-    if( chr < 0x80 ) {
-      bytes.push( chr )
-    } else if( chr < 0x800 ) {
-      bytes.push(
-        0xC0 | ( chr >> 6 ),
-        0x80 | ( chr & 0x3F )
-      )
-    } else if( chr < 0xD800 || chr >= 0xE000 ) {
-      bytes.push(
-        0xE0 | ( chr >> 12 ),
-        0x80 | ( chr >>  6 & 0x3F ),
-        0x80 | ( chr & 0x3F )
-      )
-    } else if( chr >= 0xD800 && chr <= 0xDBFF ) {
-      next = str.charCodeAt( i + 1 )
-      if( next < 0xDC00 || next > 0xDFFF ) {
-        bytes.push( 0xEF, 0xBB, 0xBF )
-      } else {
-        bytes.push(
-          0xF0 | ( chr >> 18 ),
-          0x80 | ( chr >> 12 & 0x3F ),
-          0x80 | ( chr >>  6 & 0x3F ),
-          0x80 | ( chr & 0x3F )
-        )
-      }
-    } else {
-      bytes.push( 0xEF, 0xBB, 0xBF )
-    }
-    
-  }
-  
-  return bytes
-  
-}
-
-/**
  * MIME constructor
  */
 function MIME() {
