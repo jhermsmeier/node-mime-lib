@@ -1,4 +1,4 @@
-Node.js MIME Library [![Build Status](https://travis-ci.org/jhermsmeier/node-mime.png?branch=master)](https://travis-ci.org/jhermsmeier/node-mime)
+Node.js MIME Library [![Build Status](https://travis-ci.org/jhermsmeier/node-mime.png?branch=master)](https://travis-ci.org/jhermsmeier/node-mime) [![NPM version](https://badge.fury.io/js/mime-lib.png)](http://badge.fury.io/js/mime-lib)
 ====================
 
 
