@@ -149,26 +149,20 @@ MIME.prototype = {
    * Encodes a string into Quoted-printable format.
    * 
    * @param  {String}  input 
-   * @param  {Boolean} multibyte 
    * @param  {Boolean} wordMode 
    * @return {String} 
    */
-  encodeQP: function( input, multibyte, wordMode ) {
+  encodeQP: function( input, wordMode ) {
     
     var pattern = ( !wordMode )
       ? /[\x3D]|[^\x09\x0D\x0A\x20-\x7E]/gm
       : /[\x3D\x5F\x3F]|[^\x21-\x7E]/gm
     
-    input = input.replace( pattern, function( match ) {
-      match = ( multibyte )
-        ? encodeURIComponent( match )
-        : escape( match )
-      return match.replace( /%/g, '=' )
+    return input.replace( pattern, function( char ) {
+      return bytes( char ).reduce( function( qp, byte ) {
+        return qp + '=' + byte.toString(16).toUpperCase()
+      }, '' )
     })
-    
-    return ( !wordMode )
-      ? input.replace( /(.{73}(?!\r\n))/g, "$1=\r\n" )
-      : input
     
   },
   
