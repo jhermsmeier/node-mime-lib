@@ -209,9 +209,8 @@ MIME.prototype = {
    */
   encodeWord: function( input, type, charset ) {
     
-    type = ( type )
-      ? type.toUpperCase()
-      : 'Q'
+    type = ( type || 'Q' ).toUpperCase()
+    charset = ( charset || 'utf-8' ).toUpperCase()
     
     if( type === 'B' ) {
       input = this.encodeBase64( input, charset )
@@ -243,7 +242,7 @@ MIME.prototype = {
         data = self.decodeQP( data, charset, true )
         
         if( type === 'B' ) {
-          data = self.decodeBase64( data, 'utf-8' )
+          data = self.decodeBase64( data, charset )
         }
         
         return data
