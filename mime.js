@@ -118,12 +118,14 @@ MIME.prototype = {
    * @return {String} 
    */
   encodeBase64: function( input, charset ) {
-    if( Buffer.isBuffer( input ) ) {
-      return input.toString( 'base64' )
-    } else {
+    if( charset ) {
       return new MIME.Iconv( charset, 'UTF8//TRANSLIT//IGNORE' )
         .convert( input )
         .toString( 'base64' )
+    } else {
+      return Buffer.isBuffer( input )
+        ? input.toString( 'base64' )
+        : new Buffer( input ).toString( 'base64' )
     }
   },
   
@@ -136,7 +138,7 @@ MIME.prototype = {
    */
   decodeBase64: function( input, charset ) {
     if( charset ) {
-      return new Iconv( 'UTF8', charset + '//TRANSLIT//IGNORE' )
+      return new MIME.Iconv( 'UTF8', charset + '//TRANSLIT//IGNORE' )
         .convert( new Buffer( input, 'base64' ) )
     } else {
       return new Buffer( input, 'base64' )
