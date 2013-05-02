@@ -180,13 +180,12 @@ MIME.prototype = {
    * @param  {Boolean} wordMode 
    * @return {String} 
    */
-  decodeQP: function( input, multibyte, wordMode ) {
+  decodeQP: function( input, charset, wordMode ) {
     
     if( !wordMode ) {
-      input = input.replace( /[=]\r\n/gm, '' )
+      input = input.replace( /[=]\r?\n/gm, '' )
       input = input.replace( /[=]$/, '' )
-    }
-    else {
+    } else {
       input = input.replace( /_/g, ' ' )
     }
     
