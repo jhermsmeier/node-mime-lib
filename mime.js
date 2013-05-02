@@ -139,6 +139,9 @@ MIME.prototype = {
    */
   decodeQP: function( input, charset, wordMode ) {
     
+    var bytes = []
+    charset = charset || 'utf8'
+    
     if( !wordMode ) {
       input = input.replace( /[=]\r?\n/gm, '' )
       input = input.replace( /[=]$/, '' )
@@ -146,9 +149,13 @@ MIME.prototype = {
       input = input.replace( /_/g, ' ' )
     }
     
-    input = input.replace( /[=]([A-F0-9]{2})/g, "%$1" )
+    input.replace( /[=]([A-F0-9]{2})|(.)/g, function( match, hex, chr ) {
+      bytes.push( hex ? parseInt( hex, 16 ) : chr.charCodeAt( 0 ) )
+    })
     
-    return decodeURIComponent( input )
+    return new MIME.Iconv( charset, 'UTF8//TRANSLIT//IGNORE' )
+      .convert( new Buffer( bytes ) )
+      .toString()
     
   },
   
