@@ -69,8 +69,8 @@ MIME.prototype = {
    * @return {String} 
    */
   encodeBase64: function( input, charset ) {
-    if( charset ) {
-      return new MIME.Iconv( charset, 'UTF8//TRANSLIT//IGNORE' )
+    if( charset && !Buffer.isBuffer( input ) ) {
+      return new MIME.Iconv( 'UTF8', charset+'//TRANSLIT//IGNORE' )
         .convert( input )
         .toString( 'base64' )
     } else {
