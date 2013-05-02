@@ -1,11 +1,9 @@
 {
   
   "name": "mime-lib",
-  "version": "0.0.1-alpha",
+  "version": "0.1.0",
   "description": "",
-  "kewords": [
-    
-  ],
+  "kewords": [],
   
   "author": {
     "name":  "Jonas Hermsmeier",
@@ -15,12 +13,8 @@
   
   "main": "mime.js",
   
-  "engine": {
-    "node": "0.6.x"
-  },
-  
   "dependencies": {
-    
+    "iconv": "~2.0.2"
   },
   
   "devDependencies": {
