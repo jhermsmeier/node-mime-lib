@@ -252,6 +252,37 @@ MIME.prototype = {
     
     return lines.join( CRLF + ' ' ) + CRLF
     
+  },
+  
+  urlEncode: function( str ) {
+    
+    var len = str.length
+    var chr, out = ''
+    
+    for( var i = 0; i < len; i++ ) {
+      chr = str.charCodeAt( i )
+      if( chr >= 0x41 && chr <= 0x5A ) {
+        out = out + str[i]
+      } else if( chr >= 0x61 && chr <= 0x7A ) {
+        out = out + str[i]
+      } else if( chr >= 0x30 && chr <= 0x39 ) {
+        out = out + str[i]
+      } else if( str[i].match( /[-_.!~*'()]/ ) ) {
+        out = out + str[i]
+      } else if( chr <= 0x007F ) {
+        out = out + '%' + chr.toString( 16 ).toUpperCase()
+      } else if( chr <= 0x07FF ) {
+        out = out + '%' + ( 0xC0 | (chr >>   6) ).toString( 16 ).toUpperCase()
+        out = out + '%' + ( 0x80 | (chr & 0x3F) ).toString( 16 ).toUpperCase()
+      } else {
+        out = out + '%' + ( 0xE0 | (chr >> 12) ).toString( 16 ).toUpperCase()
+        out = out + '%' + ( 0x80 | ((chr >> 6) & 0x3F) ).toString( 16 ).toUpperCase()
+        out = out + '%' + ( 0x80 | (chr & 0x3F) ).toString( 16 ).toUpperCase()
+      }
+    }
+    
+    return out
+    
   }
   
 }
