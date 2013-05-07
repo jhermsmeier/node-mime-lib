@@ -259,6 +259,10 @@ MIME.prototype = {
     var len = str.length
     var chr, out = ''
     
+    function hex( number ) {
+      return number.toString( 16 ).toUpperCase()
+    }
+    
     for( var i = 0; i < len; i++ ) {
       chr = str.charCodeAt( i )
       if( chr >= 0x41 && chr <= 0x5A ) {
@@ -270,14 +274,14 @@ MIME.prototype = {
       } else if( str[i].match( /[-_.!~*'()]/ ) ) {
         out = out + str[i]
       } else if( chr <= 0x007F ) {
-        out = out + '%' + chr.toString( 16 ).toUpperCase()
+        out = out + '%' + hex( chr )
       } else if( chr <= 0x07FF ) {
-        out = out + '%' + ( 0xC0 | (chr >>   6) ).toString( 16 ).toUpperCase()
-        out = out + '%' + ( 0x80 | (chr & 0x3F) ).toString( 16 ).toUpperCase()
+        out = out + '%' + hex( 0xC0 | (chr >>   6) )
+        out = out + '%' + hex( 0x80 | (chr & 0x3F) )
       } else {
-        out = out + '%' + ( 0xE0 | (chr >> 12) ).toString( 16 ).toUpperCase()
-        out = out + '%' + ( 0x80 | ((chr >> 6) & 0x3F) ).toString( 16 ).toUpperCase()
-        out = out + '%' + ( 0x80 | (chr & 0x3F) ).toString( 16 ).toUpperCase()
+        out = out + '%' + hex( 0xE0 | (chr >> 12) )
+        out = out + '%' + hex( 0x80 | ((chr >> 6) & 0x3F) )
+        out = out + '%' + hex( 0x80 | (chr & 0x3F) )
       }
     }
     
