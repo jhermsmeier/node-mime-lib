@@ -10,6 +10,8 @@ module.exports = {
   
   'URI': {
     'Encode': require( './uri/encode' )
-  }
+  },
+  
+  'Line folding': require( './foldline' )
   
 }
