@@ -224,30 +224,45 @@ MIME.prototype = {
    */
   foldLine: function( input, maxLength, hardWrap ) {
     
+    // Remove any newlines
+    input = input.replace( /\r?\n/g, '' )
+    
     // RFC compliant default line length
-    maxLength = maxLength || 78
+    maxLength = maxLength && maxLength > 5
+      ? maxLength : 78
     
     // We really don't need to fold this
     if( input.length <= maxLength )
       return input
     
-    // Go into "hard wrap" mode if there's
-    // no whitespace to fold on
-    if( !/\t|\s/g.test( input ) )
-      hardWrap = true
+    // Substract 3 because CRLF<space> is the line delimiter
+    // (3 bytes + 1 <space> extra because of soft folding)
+    maxLength -= 4
     
-    var CRLF  = '\r\n'
-    var lines = []
+    const CRLF = '\r\n'
     
-    if( hardWrap ) {
-      var i = 0, max = maxLength - 3
-      var c = (( input.length / max ) | 0 ) + 1
-      for( ; i < c; i++ ) {
-        lines.push( input.slice( i * max, i * max + max ) )
+    var lines = [], len = input.length
+    var lastIndex = 0, index = 0
+    
+    if( !hardWrap ) {
+      while( ~(lastIndex = input.lastIndexOf( ' ', maxLength + index )) ) {
+        if( lastIndex <= index ) { break }
+        if( input.slice( index ).length > maxLength ) {
+          lines.push( (index ? ' ' : '') + input.slice( index, lastIndex ) )
+          index = lastIndex + 1
+        } else {
+          lines.push( (index ? ' ' : '') + input.slice( index ) )
+          index = len
+        }
       }
     }
-    else {
-      // TODO
+    
+    // We remove the one <space> extra here again,
+    // since we're going into hard folding more
+    maxLength++
+    
+    while( index < len ) {
+      lines.push( input.slice( index, index += maxLength ) )
     }
     
     return lines.join( CRLF + ' ' ) + CRLF
