@@ -16,7 +16,7 @@ module.exports = {
     assert.equal( output, [
       'This string should be way longer than 78 chars. Which should trigger line',
       ' folding. Let\'s see, if this works...'
-    ].join( '\r\n ' )+'\r\n')
+    ].join( '\r\n ' ))
     
   },
   
@@ -37,7 +37,7 @@ module.exports = {
       ' f97c055cbb09fd2c4414e698362119866740e271f97c055cbb09fd2c4414e69836211986674',
       ' 0e271 f97c055cbb09fd2c4414e698362119866740e271f97c055cbb09fd2c4414e69836211',
       ' 9866740e271'
-    ].join( '\r\n' )+'\r\n')
+    ].join( '\r\n' ))
     
   },
   
@@ -57,7 +57,7 @@ module.exports = {
       ' olding. Let\'s see, if this works... f97c055cbb09fd2c4414e698362119866740e27',
       ' 1f97c055cbb09fd2c4414e698362119866740e271 f97c055cbb09fd2c4414e698362119866',
       ' 740e271f97c055cbb09fd2c4414e698362119866740e271'
-    ].join( '\r\n' )+'\r\n')
+    ].join( '\r\n' ))
     
   },
   
