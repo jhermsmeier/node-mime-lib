@@ -88,11 +88,15 @@ MIME.prototype = {
    * @return {String|Buffer} 
    */
   decodeBase64: function( input, charset ) {
-    if( charset ) {
-      return new MIME.Iconv( 'UTF8', charset + '//TRANSLIT//IGNORE' )
-        .convert( new Buffer( input, 'base64' ) )
-    } else {
-      return new Buffer( input, 'base64' )
+    try {
+      if( charset ) {
+        return new MIME.Iconv( 'UTF8', charset + '//TRANSLIT//IGNORE' )
+          .convert( new Buffer( input, 'base64' ) )
+      } else {
+        return new Buffer( input, 'base64' )
+      }
+    } catch( error ) {
+      return input
     }
   },
   
@@ -237,7 +241,7 @@ MIME.prototype = {
     
     // Substract 3 because CRLF<space> is the line delimiter
     // (3 bytes + 1 <space> extra because of soft folding)
-    maxLength -= 4
+    maxLength = maxLength - 4
     
     const CRLF = '\r\n'
     
@@ -258,14 +262,14 @@ MIME.prototype = {
     }
     
     // We remove the one <space> extra here again,
-    // since we're going into hard folding more
+    // since we're going into hard folding mode
     maxLength++
     
     while( index < len ) {
       lines.push( input.slice( index, index += maxLength ) )
     }
     
-    return lines.join( CRLF + ' ' ) + CRLF
+    return lines.join( CRLF + ' ' )
     
   },
   
