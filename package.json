@@ -3,7 +3,7 @@
   "name": "mime-lib",
   "version": "0.1.0",
   "description": "MIME related utility functions",
-  "kewords": [],
+  "keywords": [],
   
   "author": {
     "name":  "Jonas Hermsmeier",
