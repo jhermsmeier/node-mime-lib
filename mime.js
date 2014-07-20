@@ -33,7 +33,7 @@ function MIME() {
  * Iconv constructor
  * @type {Iconv}
  */
-MIME.Iconv = require( 'iconv' ).Iconv
+MIME.Iconv = require( 'iconv-lite' )
 
 /**
  * MIME prototype
@@ -70,9 +70,7 @@ MIME.prototype = {
    */
   encodeBase64: function( input, charset ) {
     if( charset && !Buffer.isBuffer( input ) ) {
-      return new MIME.Iconv( 'UTF8', charset+'//TRANSLIT//IGNORE' )
-        .convert( input )
-        .toString( 'base64' )
+      return MIME.Iconv.encode( input, charset )
     } else {
       return Buffer.isBuffer( input )
         ? input.toString( 'base64' )
@@ -88,15 +86,10 @@ MIME.prototype = {
    * @return {String|Buffer} 
    */
   decodeBase64: function( input, charset ) {
-    try {
-      if( charset ) {
-        return new MIME.Iconv( 'UTF8', charset + '//TRANSLIT//IGNORE' )
-          .convert( new Buffer( input, 'base64' ) )
-      } else {
-        return new Buffer( input, 'base64' )
-      }
-    } catch( error ) {
-      return input
+    if( charset ) {
+      return MIME.Iconv.decode( new Buffer( input, 'base64' ), charset )
+    } else {
+      return new Buffer( input, 'base64' )
     }
   },
   
@@ -157,9 +150,7 @@ MIME.prototype = {
       bytes.push( hex ? parseInt( hex, 16 ) : chr.charCodeAt( 0 ) )
     })
     
-    return new MIME.Iconv( charset, 'UTF8//TRANSLIT//IGNORE' )
-      .convert( new Buffer( bytes ) )
-      .toString()
+    return MIME.Iconv.decode( new Buffer( bytes ), charset )
     
   },
   
