@@ -14,7 +14,7 @@
     "base64",
     "urlencode"
   ],
-  "main": "mime",
+  "main": "lib/mime",
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
   "dependencies": {
     "iconv-lite": "~0.4.7"
