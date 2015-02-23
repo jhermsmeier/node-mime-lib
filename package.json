@@ -1,26 +1,34 @@
 {
   "name": "mime-lib",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "MIME related utility functions",
-  "keywords": [],
-  "author": {
-    "name": "Jonas Hermsmeier",
-    "email": "jhermsmeier@gmail.com",
-    "url": "http://jhermsmeier.de"
-  },
+  "license": "MIT",
+  "keywords": [
+    "MIME",
+    "utility",
+    "foldline",
+    "qp",
+    "quoted",
+    "printable",
+    "type",
+    "base64",
+    "urlencode"
+  ],
   "main": "mime",
+  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
   "dependencies": {
-    "iconv-lite": "^0.4.4"
+    "iconv-lite": "~0.4.7"
   },
   "devDependencies": {
-    "mocha": ""
+    "mocha": "~2.1.0"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha"
+    "test": "mocha"
   },
+  "homepage": "https://github.com/jhermsmeier/node-mime",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jhermsmeier/node-mime.git"
+    "url": "https://github.com/jhermsmeier/node-mime.git"
   },
   "bugs": {
     "url": "https://github.com/jhermsmeier/node-mime/issues"
