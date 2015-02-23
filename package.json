@@ -1,6 +1,6 @@
 {
   "name": "mime-lib",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "MIME related utility functions",
   "license": "MIT",
   "keywords": [
