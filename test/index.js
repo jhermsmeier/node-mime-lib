@@ -12,6 +12,8 @@ module.exports = {
     'Encode': require( './uri/encode' )
   },
   
-  'Line folding': require( './foldline' )
+  'Line folding': require( './foldline' ),
+
+  'Types': require( './types' )
   
 }
