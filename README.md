@@ -1,8 +1,8 @@
 # MIME Library
-[![npm](http://img.shields.io/npm/v/mime-lib.svg?style=flat-square)](https://npmjs.com/mime-lib)
-[![npm](http://img.shields.io/npm/l/mime-lib.svg?style=flat-square)](https://npmjs.com/mime-lib)
-[![npm downloads](http://img.shields.io/npm/dm/mime-lib.svg?style=flat-square)](https://npmjs.com/mime-lib)
-[![build status](http://img.shields.io/travis/jhermsmeier/node-mime.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-mime)
+[![npm](https://img.shields.io/npm/v/mime-lib.svg?style=flat-square)](https://npmjs.com/mime-lib)
+[![npm](https://img.shields.io/npm/l/mime-lib.svg?style=flat-square)](https://npmjs.com/mime-lib)
+[![npm downloads](https://img.shields.io/npm/dm/mime-lib.svg?style=flat-square)](https://npmjs.com/mime-lib)
+[![build status](https://img.shields.io/travis/jhermsmeier/node-mime.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-mime)
 
 ## Install via [npm](https://npmjs.com)
 
