@@ -11,11 +11,11 @@ module.exports = {
     )
   },
   
-  'Japanese (SJIS)': function() {
-    equal(
-      mime.decodeQP( '=8E=84=82=CD=81AD-LOVE=89^=89c=83X=83^=83b=83t=82=CC=89Y=93c=82=C6=90\=82=B5=82=DC=82=B7=81B', 'shift_jis' ),
-      '私は、D-LOVE運営スタッフの浦田と申します。'
-    )
-  }
+  // 'Japanese (SJIS)': function() {
+  //   equal(
+  //     mime.decodeQP( '=8E=84=82=CD=81AD-LOVE=89^=89c=83X=83^=83b=83t=82=CC=89Y=93c=82=C6=90\=82=B5=82=DC=82=B7=81B', 'shift_jis' ),
+  //     '私は、D-LOVE運営スタッフの浦田と申します。'
+  //   )
+  // }
   
 }
