@@ -14,9 +14,10 @@
     "base64",
     "urlencode"
   ],
-  "main": "lib/mime",
+  "main": "lib/mime.js",
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
   "dependencies": {
+    "foldline": "~1.0.0",
     "iconv-lite": "~0.4.13"
   },
   "devDependencies": {
