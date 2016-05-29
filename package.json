@@ -20,10 +20,10 @@
     "iconv-lite": "~0.4.13"
   },
   "devDependencies": {
-    "mocha": "~2.4.5"
+    "mocha": "~2.5.3"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --require assert --reporter spec --ui exports"
   },
   "homepage": "https://github.com/jhermsmeier/node-mime",
   "repository": {
