@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/mime-lib.svg?style=flat-square)](https://npmjs.com/mime-lib)
 [![build status](https://img.shields.io/travis/jhermsmeier/node-mime.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-mime)
 
-## Install via [npm](https://npmjs.com)
+## Install via [npm](https://npmjs.com/package/mime-lib)
 
 ```sh
 $ npm install mime-lib
@@ -96,4 +96,4 @@ Returns string.
 Folds a long line according to the 
 [RFC 5322](http://tools.ietf.org/html/rfc5322#section-2.1.1).  
 Returns string.
-
+See [jhermsmeier/node-foldline](https://github.com/jhermsmeier/node-foldline)
