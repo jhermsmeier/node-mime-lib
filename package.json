@@ -17,21 +17,21 @@
   "main": "lib/mime.js",
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
   "dependencies": {
-    "foldline": "~1.0.0",
-    "iconv-lite": "~0.4.13"
+    "foldline": "^1.0.1",
+    "iconv-lite": "^0.4.19"
   },
   "devDependencies": {
-    "mocha": "~2.5.3"
+    "mocha": "~4.0.1"
   },
   "scripts": {
     "test": "mocha --require assert --reporter spec --ui exports"
   },
-  "homepage": "https://github.com/jhermsmeier/node-mime",
+  "homepage": "https://github.com/jhermsmeier/node-mime-lib",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhermsmeier/node-mime.git"
+    "url": "https://github.com/jhermsmeier/node-mime-lib.git"
   },
   "bugs": {
-    "url": "https://github.com/jhermsmeier/node-mime/issues"
+    "url": "https://github.com/jhermsmeier/node-mime-lib/issues"
   }
 }
