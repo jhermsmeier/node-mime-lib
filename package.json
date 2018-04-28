@@ -24,7 +24,7 @@
     "mocha": "~4.0.1"
   },
   "scripts": {
-    "test": "mocha --require assert --reporter spec --ui exports"
+    "test": "mocha"
   },
   "homepage": "https://github.com/jhermsmeier/node-mime-lib",
   "repository": {
